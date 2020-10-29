@@ -1,0 +1,12 @@
+{
+  "name": "Agrobook-Mobile",
+  "displayName": "Agrobook-Mobile",
+  "expo": {
+    "name": "Agrobook-Mobile",
+    "slug": "Agrobook-Mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
