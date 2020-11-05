@@ -5,18 +5,21 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { ApolloProvider } from "@apollo/client";
 import appoloClientInit from "./GraphQl/AppoloClient";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import * as SplashScreen from "expo-splash-screen";
 
 export default function App() {
   const [client, setClient] = useState<any>(undefined);
   useEffect(() => {
     async function init() {
+      await SplashScreen.preventAutoHideAsync();
       const appoloClient = await appoloClientInit();
       setClient(appoloClient);
     }
     init();
   }, []);
   return (
-    <>
+    <SafeAreaProvider>
       <StatusBar
         networkActivityIndicatorVisible
         animated
@@ -30,7 +33,7 @@ export default function App() {
           </ApolloProvider>
         )}
       </NavigationContainer>
-    </>
+    </SafeAreaProvider>
   );
 }
 
