@@ -2103,6 +2103,11 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
+"@types/markdown-it@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-0.0.4.tgz#c5f67365916044b342dae8d702724788ba0b5b74"
+  integrity sha512-FWR7QB7EqBRq1s9BMk0ccOSOuRLfVEWYpHQYpFPaXtCoqN6dJx2ttdsdQbUxLLnAlKpYeVjveGGhQ3583TTa7g==
+
 "@types/node@*":
   version "14.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
@@ -2132,6 +2137,13 @@
   version "16.9.9"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.9.tgz#d2d0a6f720a0206369ccbefff752ba37b9583136"
   integrity sha512-jE16FNWO3Logq/Lf+yvEAjKzhpST/Eac8EMd1i4dgZdMczfgqC8EjpxwNgEe3SExHYLliabXDh9DEhhqnlXJhg==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-native@>=0.50.0":
+  version "0.63.35"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.35.tgz#c9d6c3c0461b1aa0dff89c6b53ef509461a19183"
+  integrity sha512-2uyPZoHtoUVsVO55HdrRCpgwwG2zVHLttTaR9f/BThoBAQngNWuZQ0eMGmfgRHBKXmi3TmtWjbWPxohkITLlkw==
   dependencies:
     "@types/react" "*"
 
@@ -3327,6 +3339,11 @@ cross-spawn@^7.0.0:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+crypto-js@^3.1.9-1:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -3631,6 +3648,11 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
+entities@~1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
+  integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
+
 entities@~2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.3.tgz#5c487e5742ab93c15abb5da22759b8590ec03b7f"
@@ -3877,6 +3899,11 @@ expo-asset@~8.2.0:
     md5-file "^3.2.3"
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
+
+expo-blur@~8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/expo-blur/-/expo-blur-8.2.0.tgz#4f586b5019c70f93c9914b2ff6ecadda4a382d51"
+  integrity sha512-LXx8tyVMk1pE4Ug9fHNTIsZnUPewmWXyFhiEwUkeP5SKlg92CgWGbTiGkdhFiU5X0vDxgFKsVVilLcNQxWYSfQ==
 
 expo-constants@~9.2.0:
   version "9.2.0"
@@ -6084,6 +6111,17 @@ markdown-it@^10.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
+markdown-it@^8.4.0:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  integrity sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
 matcher@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/matcher/-/matcher-3.0.0.tgz#bd9060f4c5b70aa8041ccc6f80368760994f30ca"
@@ -7378,7 +7416,15 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-fit-image@^1.5.5:
+react-native-expo-image-cache@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-expo-image-cache/-/react-native-expo-image-cache-4.1.0.tgz#649cbe9786249134d3eafed5baba50bbfa80c029"
+  integrity sha512-U6xHtuyalNZThhM11lu4+mRNSpJFkdh4dSLbWkKAj5QfY63cKlTnDVtv8c88njn71GHL4exEzf8hNKBMWhH37Q==
+  dependencies:
+    crypto-js "^3.1.9-1"
+    lodash "^4.17.4"
+
+react-native-fit-image@^1.5.2, react-native-fit-image@^1.5.5:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/react-native-fit-image/-/react-native-fit-image-1.5.5.tgz#c660d1ad74b9dcaa1cba27a0d9c23837e000226c"
   integrity sha512-Wl3Vq2DQzxgsWKuW4USfck9zS7YzhvLNPpkwUUCF90bL32e1a0zOVQ3WsJILJOwzmPdHfzZmWasiiAUNBkhNkg==
@@ -7409,6 +7455,17 @@ react-native-markdown-display@^7.0.0-alpha.2:
     markdown-it "^10.0.0"
     prop-types "^15.7.2"
     react-native-fit-image "^1.5.5"
+
+react-native-markdown-renderer@^3.2.8:
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/react-native-markdown-renderer/-/react-native-markdown-renderer-3.2.8.tgz#217046cf198eca632a65f93cdf7dd7766f718070"
+  integrity sha512-gDT5r3lwecNsEfpKagSaidEGfmCbpVcmV+HHLjaGYRALJoHkpOFni0rJZW1rCerOR9sjaUNGXE66U7BUrlEw0w==
+  dependencies:
+    "@types/markdown-it" "^0.0.4"
+    "@types/react-native" ">=0.50.0"
+    markdown-it "^8.4.0"
+    prop-types "^15.5.10"
+    react-native-fit-image "^1.5.2"
 
 react-native-reanimated@~1.13.0:
   version "1.13.1"

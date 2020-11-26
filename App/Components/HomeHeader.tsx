@@ -5,16 +5,19 @@ import {
   View,
   ImageBackground,
   useWindowDimensions,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Entypo } from "@expo/vector-icons";
 import SearchBar from "./SearchBar";
 import { AppLoading } from "expo";
 import { useFonts, Gotu_400Regular } from "@expo-google-fonts/gotu";
 
-const HomeHeader = () => {
+type propTypes = {
+  onTextChange: (value: string) => void;
+};
+const HomeHeader = ({ onTextChange }: propTypes) => {
   const { height } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
   const [searchValue, setSearchValue] = useState("");
   const [fontsLoaded] = useFonts({
     Gotu_400Regular,
@@ -23,42 +26,45 @@ const HomeHeader = () => {
     return <AppLoading />;
   } else {
     return (
-      <ImageBackground
-        style={[
-          styles.imgBackGround,
-          {
-            height: height * 0.33,
-          },
-        ]}
-        imageStyle={[styles.imageStyle]}
-        source={require("../../Assets/Images/HomeBG.jpeg")}
+      <TouchableWithoutFeedback
+        onPress={() => Keyboard.dismiss()}
+        style={{
+          flex: 1,
+        }}
       >
-        <View
+        <ImageBackground
           style={[
-            styles.headerView,
+            styles.imgBackGround,
             {
-              paddingTop: insets.top,
+              height: height * 0.33,
             },
           ]}
+          imageStyle={[styles.imageStyle]}
+          source={require("../../Assets/Images/HomeBG.jpeg")}
         >
-          <Entypo name="menu" style={[styles.menu]} size={28} color="white" />
-          <View style={[styles.contentContainer]}>
-            <Text
-              allowFontScaling={false}
-              style={[
-                styles.quotes,
-                {
-                  fontFamily: "Gotu_400Regular",
-                },
-              ]}
-            >{`Let's nurture the nature so that we can have a better future`}</Text>
-            <SearchBar
-              onChange={(value) => setSearchValue(value)}
-              value={searchValue}
-            />
+          <View style={[styles.headerView]}>
+            <Entypo name="menu" style={[styles.menu]} size={28} color="white" />
+            <View style={[styles.contentContainer]}>
+              <Text
+                allowFontScaling={false}
+                style={[
+                  styles.quotes,
+                  {
+                    fontFamily: "Gotu_400Regular",
+                  },
+                ]}
+              >{`Let's nurture the nature so that we can have a better future`}</Text>
+              <SearchBar
+                onChange={(value) => {
+                  setSearchValue(value);
+                  onTextChange(value);
+                }}
+                value={searchValue}
+              />
+            </View>
           </View>
-        </View>
-      </ImageBackground>
+        </ImageBackground>
+      </TouchableWithoutFeedback>
     );
   }
 };
@@ -93,6 +99,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
     textAlign: "left",
-    marginBottom: 10,
+    marginBottom: 15,
   },
 });

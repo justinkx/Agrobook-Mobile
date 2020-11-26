@@ -9,7 +9,12 @@ import DetailsPage from "../Pages/Agro/DetailsPage";
 import ToolsPage from "../Pages/Tools/ToolsPage";
 import { enableScreens } from "react-native-screens";
 
-const Stack = createSharedElementStackNavigator();
+export type RootStackParamList = {
+  HomePage: undefined;
+  DetailsPage: { categoryId: string; imageUrl: string };
+  ToolsPage: undefined;
+};
+const Stack = createSharedElementStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 enableScreens();
@@ -27,13 +32,13 @@ const AgroStack = () => {
             open: {
               animation: "timing",
               config: {
-                delay: 1000,
+                delay: 100,
               },
             },
             close: {
               animation: "timing",
               config: {
-                delay: 1000,
+                delay: 100,
               },
             },
           },
