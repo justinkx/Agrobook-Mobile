@@ -5,13 +5,20 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 import HomePage from "../Pages/Agro/HomePage";
+import SubCategoryPage from "../Pages/Agro/SubCategoryPage";
 import DetailsPage from "../Pages/Agro/DetailsPage";
 import ToolsPage from "../Pages/Tools/ToolsPage";
 import { enableScreens } from "react-native-screens";
 
 export type RootStackParamList = {
   HomePage: undefined;
-  DetailsPage: { categoryId: string; imageUrl: string };
+  SubCategoryPage: {
+    categoryId: string;
+    imageUrl: string;
+    name: string;
+    description: string;
+  };
+  DetailsPage: { subCategoryId: string };
   ToolsPage: undefined;
 };
 const Stack = createSharedElementStackNavigator<RootStackParamList>();
@@ -24,6 +31,34 @@ const AgroStack = () => {
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="HomePage" component={HomePage} />
       <Stack.Screen
+        name="SubCategoryPage"
+        component={SubCategoryPage}
+        options={() => ({
+          gestureEnabled: false,
+          transitionSpec: {
+            open: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+            close: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+          },
+          cardStyleInterpolator: ({ current: { progress } }) => {
+            return {
+              cardStyle: {
+                opacity: progress,
+              },
+            };
+          },
+        })}
+      />
+      <Stack.Screen
         name="DetailsPage"
         component={DetailsPage}
         options={() => ({
@@ -32,13 +67,13 @@ const AgroStack = () => {
             open: {
               animation: "timing",
               config: {
-                delay: 100,
+                delay: 400,
               },
             },
             close: {
               animation: "timing",
               config: {
-                delay: 100,
+                delay: 400,
               },
             },
           },

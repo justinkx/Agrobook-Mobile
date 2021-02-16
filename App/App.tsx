@@ -23,8 +23,10 @@ export default function App() {
       <StatusBar
         networkActivityIndicatorVisible
         animated
-        backgroundColor={"green"}
+        // backgroundColor={"green"}
         style="dark"
+        translucent
+        backgroundColor="transparent"
       />
       <NavigationContainer>
         {client && (

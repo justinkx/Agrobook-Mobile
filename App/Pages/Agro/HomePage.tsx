@@ -45,10 +45,17 @@ const HomePage = ({ navigation }: HomePageProps) => {
   const renderItem = ({ item }: renderType) => {
     return (
       <CategoryCard
-        onCategorySelect={(id: string, imageUrl: string) =>
-          navigation.push("DetailsPage", {
+        onCategorySelect={(
+          id: string,
+          imageUrl: string,
+          name: string,
+          description: string
+        ) =>
+          navigation.push("SubCategoryPage", {
             categoryId: id,
             imageUrl: imageUrl,
+            name,
+            description,
           })
         }
         category={item}

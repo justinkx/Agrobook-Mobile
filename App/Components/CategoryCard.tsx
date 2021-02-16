@@ -22,7 +22,12 @@ export type Category = {
 };
 type propTypes = {
   category: Category;
-  onCategorySelect: (id: string, imageUrl: string) => void;
+  onCategorySelect: (
+    id: string,
+    imageUrl: string,
+    name: string,
+    description: string
+  ) => void;
 };
 
 const CategoryCard = ({ category, onCategorySelect }: propTypes) => {
@@ -40,12 +45,19 @@ const CategoryCard = ({ category, onCategorySelect }: propTypes) => {
   } else {
     return (
       <TouchableOpacity
-        onPress={() => onCategorySelect(category.id, uri)}
+        onPress={() =>
+          onCategorySelect(
+            category.id,
+            uri,
+            category.name,
+            category.description
+          )
+        }
         activeOpacity={0.5}
         style={[styles.container]}
       >
         {category.image[0].formats && (
-          <SharedElement style={{ ...StyleSheet.absoluteFillObject }} id={uri}>
+          <SharedElement id={uri}>
             <Image
               blurRadius={0.65}
               style={[
@@ -59,17 +71,20 @@ const CategoryCard = ({ category, onCategorySelect }: propTypes) => {
           </SharedElement>
         )}
         <View style={[styles.contentContainer]}>
-          <Text
-            style={[
-              styles.name,
-              {
-                fontFamily: "Gotu_400Regular",
-              },
-            ]}
-            allowFontScaling={false}
-          >
-            {category.name}
-          </Text>
+          <SharedElement id={`name-${category.id}`}>
+            <Text
+              style={[
+                styles.name,
+                {
+                  fontFamily: "Gotu_400Regular",
+                },
+              ]}
+              allowFontScaling={false}
+            >
+              {category.name}
+            </Text>
+          </SharedElement>
+
           <AntDesign
             style={[styles.rightIcon]}
             name="rightcircle"

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { gql, useQuery } from "@apollo/client";
-import { DetailsHeader } from "../../Components/DetailsPageHeader";
+import { SubCategoryPageHeader } from "../../Components/SubCategoryPageHeader";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -12,16 +12,15 @@ type HomeScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "DetailsPage"
 >;
-type ProfileScreenRouteProp = RouteProp<RootStackParamList, "DetailsPage">;
+type DetailsPageRouteProp = RouteProp<RootStackParamList, "DetailsPage">;
 
 type DetailsPageProps = {
   navigation: HomeScreenNavigationProp;
-  route: ProfileScreenRouteProp;
+  route: DetailsPageRouteProp;
 };
-
 const SUB_CATEGORIES = gql`
-  query getSubCategories($categoryId: String) {
-    subCategories(where: { category: { id_eq: $categoryId } }) {
+  query getSubCategory($subCategoryId: String) {
+    subCategories(where: { id_eq: $subCategoryId }) {
       name
       scientific_name
       farm_methods
@@ -48,24 +47,14 @@ const SUB_CATEGORIES = gql`
   }
 `;
 const DetailsPage = ({ route, navigation }: DetailsPageProps) => {
-  const { categoryId, imageUrl } = route.params;
-  const { loading, error, data } = useQuery(SUB_CATEGORIES, {
-    variables: {
-      categoryId: categoryId,
-    },
-  });
-  console.log("loading, data", loading, data, error);
+  const { subCategoryId } = route.params;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <DetailsHeader name={"D"} imageUrl={imageUrl} />
-      <Text>Home Page</Text>
-    </SafeAreaView>
+    <View>
+      <Text></Text>
+    </View>
   );
 };
-DetailsPage.sharedElements = (route: any, otherRoute: any, showing: any) => {
-  const { imageUrl } = route.params;
-  return [`${imageUrl}`];
-};
+
 export default DetailsPage;
 
 const styles = StyleSheet.create({});
