@@ -12,21 +12,19 @@ export default function App() {
   const [client, setClient] = useState<any>(undefined);
   useEffect(() => {
     async function init() {
-      await SplashScreen.preventAutoHideAsync();
+      // await SplashScreen.preventAutoHideAsync();
       const appoloClient = await appoloClientInit();
       setClient(appoloClient);
     }
     init();
   }, []);
   return (
-    <SafeAreaProvider>
+    <>
       <StatusBar
         networkActivityIndicatorVisible
         animated
-        // backgroundColor={"green"}
-        style="dark"
-        translucent
-        backgroundColor="transparent"
+        backgroundColor={"green"}
+        style="auto"
       />
       <NavigationContainer>
         {client && (
@@ -35,7 +33,7 @@ export default function App() {
           </ApolloProvider>
         )}
       </NavigationContainer>
-    </SafeAreaProvider>
+    </>
   );
 }
 

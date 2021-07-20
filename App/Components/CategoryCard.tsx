@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from "react";
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import {
   useFonts,
   CormorantGaramond_500Medium,

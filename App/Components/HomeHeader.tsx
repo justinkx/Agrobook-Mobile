@@ -10,13 +10,15 @@ import {
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import SearchBar from "./SearchBar";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { useFonts, Gotu_400Regular } from "@expo-google-fonts/gotu";
 
 type propTypes = {
   onTextChange: (value: string) => void;
+  insets: any;
 };
-const HomeHeader = ({ onTextChange }: propTypes) => {
+const HomeHeader = ({ onTextChange, insets }: propTypes) => {
+  console.log("insets", insets);
   const { height } = useWindowDimensions();
   const [searchValue, setSearchValue] = useState("");
   const [fontsLoaded] = useFonts({
@@ -36,13 +38,20 @@ const HomeHeader = ({ onTextChange }: propTypes) => {
           style={[
             styles.imgBackGround,
             {
-              height: height * 0.33,
+              height: height * 0.28,
             },
           ]}
           imageStyle={[styles.imageStyle]}
           source={require("../../Assets/Images/HomeBG.jpeg")}
         >
-          <View style={[styles.headerView]}>
+          <View
+            style={[
+              styles.headerView,
+              {
+                paddingTop: insets.top,
+              },
+            ]}
+          >
             <Entypo name="menu" style={[styles.menu]} size={28} color="white" />
             <View style={[styles.contentContainer]}>
               <Text
@@ -88,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   contentContainer: {
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     width: "100%",
     flexDirection: "column",
@@ -99,6 +108,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
     textAlign: "left",
-    marginBottom: 15,
+    marginVertical: 15,
   },
 });

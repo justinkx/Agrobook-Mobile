@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import {
   useFonts,
   CormorantGaramond_500Medium,

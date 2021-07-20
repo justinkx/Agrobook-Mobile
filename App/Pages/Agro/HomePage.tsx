@@ -14,7 +14,7 @@ import CategoryCard from "../../Components/CategoryCard";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Navigation/Navigation";
 import { Category } from "../../Components/CategoryCard";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 type HomeScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -22,6 +22,7 @@ type HomeScreenNavigationProp = StackNavigationProp<
 >;
 type HomePageProps = {
   navigation: HomeScreenNavigationProp;
+  insets: any;
 };
 type renderType = {
   item: any;
@@ -38,7 +39,7 @@ const CATEGORIES = gql`
     }
   }
 `;
-const HomePage = ({ navigation }: HomePageProps) => {
+const HomePage = ({ navigation, insets }: HomePageProps) => {
   const { loading, error, data } = useQuery(CATEGORIES);
   const { height: deviceHeight } = useWindowDimensions();
   console.log("data", data);
@@ -69,13 +70,13 @@ const HomePage = ({ navigation }: HomePageProps) => {
   const headerHeight = useRef(100);
 
   const [filteredCategories, setCategories] = useState<Category[] | null>(
-    data.categories ? data.categories : null
+    data?.categories ? data.categories : null
   );
   useEffect(() => {
-    setCategories(data.categories);
+    setCategories(data?.categories);
   }, [data]);
   const onSearchValueChange = useCallback((value) => {
-    const _filteredCategories = data.categories.filter((cat: Category) =>
+    const _filteredCategories = data?.categories.filter((cat: Category) =>
       cat.name.includes(value)
     );
     setCategories(_filteredCategories);
@@ -84,13 +85,13 @@ const HomePage = ({ navigation }: HomePageProps) => {
     return null;
   }
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <TouchableWithoutFeedback
         style={{ flex: 1 }}
         onPress={() => Keyboard.dismiss()}
         onLayout={(event) => onHeaderLayout(event)}
       >
-        <HomeHeader onTextChange={onSearchValueChange} />
+        <HomeHeader insets={insets} onTextChange={onSearchValueChange} />
       </TouchableWithoutFeedback>
       <View style={{ position: "relative", flex: 1 }}>
         {filteredCategories && (
@@ -110,11 +111,11 @@ const HomePage = ({ navigation }: HomePageProps) => {
           />
         )}
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
-export default HomePage;
+export default withSafeAreaInsets(HomePage);
 
 const styles = StyleSheet.create({
   contentContainerStyle: {

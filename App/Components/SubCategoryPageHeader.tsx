@@ -5,10 +5,10 @@ import {
   View,
   ImageBackground,
   useWindowDimensions,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { useFonts, Gotu_400Regular } from "@expo-google-fonts/gotu";
 import { SharedElement } from "react-navigation-shared-element";
 import { colors } from "../Util/Theme";
@@ -44,20 +44,20 @@ export const SubCategoryPageHeader = memo(
             },
           ]}
         >
-          <View
+          <TouchableOpacity
             style={{
               width: 35,
             }}
           >
-            <Ionicons.Button
+            <Ionicons
               backgroundColor="transparent"
               underlayColor={"transparent"}
               onPress={() => navigation.goBack()}
-              name="ios-arrow-back"
-              size={26}
+              name="ios-chevron-back-sharp"
+              size={28}
               color={colors.black}
             />
-          </View>
+          </TouchableOpacity>
 
           <View
             style={[
@@ -68,7 +68,6 @@ export const SubCategoryPageHeader = memo(
                 justifyContent: "space-between",
                 alignItems: "flex-start",
                 paddingHorizontal: 10,
-                paddingTop: 10,
               },
             ]}
           >
