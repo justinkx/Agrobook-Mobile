@@ -3,24 +3,95 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 import HomePage from "../Pages/Agro/HomePage";
+import SubCategoryPage from "../Pages/Agro/SubCategoryPage";
+import DetailsPage from "../Pages/Agro/DetailsPage";
 import ToolsPage from "../Pages/Tools/ToolsPage";
+import { enableScreens } from "react-native-screens";
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  HomePage: undefined;
+  SubCategoryPage: {
+    categoryId: string;
+    imageUrl: string;
+    name: string;
+    description: string;
+  };
+  DetailsPage: { subCategoryId: string };
+  ToolsPage: undefined;
+};
+const Stack = createSharedElementStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+enableScreens();
 
 const AgroStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="HomePage" component={HomePage} />
+      <Stack.Screen
+        name="SubCategoryPage"
+        component={SubCategoryPage}
+        options={() => ({
+          gestureEnabled: false,
+          transitionSpec: {
+            open: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+            close: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+          },
+          cardStyleInterpolator: ({ current: { progress } }) => {
+            return {
+              cardStyle: {
+                opacity: progress,
+              },
+            };
+          },
+        })}
+      />
+      <Stack.Screen
+        name="DetailsPage"
+        component={DetailsPage}
+        options={() => ({
+          gestureEnabled: false,
+          transitionSpec: {
+            open: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+            close: {
+              animation: "timing",
+              config: {
+                delay: 400,
+              },
+            },
+          },
+          cardStyleInterpolator: ({ current: { progress } }) => {
+            return {
+              cardStyle: {
+                opacity: progress,
+              },
+            };
+          },
+        })}
+      />
     </Stack.Navigator>
   );
 };
 const ToolsStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="ToolsPage" component={ToolsPage} />
     </Stack.Navigator>
   );

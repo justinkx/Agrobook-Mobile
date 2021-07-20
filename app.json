@@ -5,8 +5,12 @@
     "name": "Agrobook",
     "slug": "Agrobook-Mobile",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+    "assetBundlePatterns": ["**/*"]
+  },
+  "splash": {
+    "image": "./Assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#00C6E0"
+  },
+  "icon": "./Assets/icon.png"
 }
